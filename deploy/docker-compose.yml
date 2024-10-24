@@ -1,0 +1,12 @@
+services:
+  lxcfs:
+    image: jcregistry/lxcfs:v6.0.1
+    container_name: lxcfs
+    privileged: true
+    pid: "host"
+    restart: always
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup
+      - /usr/local:/usr/local
+      - /usr/lib64:/usr/lib64
+      - /var/lib/lxcfs:/var/lib/lxcfs
