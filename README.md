@@ -1,5 +1,18 @@
 # LXCFS资源视图隔离相关文件
-* 业务容器使用
+* lxcfs容器部署
+```shell
+#!/bin/bash
+docker run -d \
+  --pid=host \
+  --privileged \
+  --restart=always \
+  -v /sys/fs/cgroup:/sys/fs/cgroup \
+  -v /usr/local:/usr/local \
+  -v /usr/lib64:/usr/lib64 \
+  -v /var/lib/lxcfs:/var/lib/lxcfs \
+  jcregistry/lxcfs:v6.0.1
+```
+* 业务容器使用方法
 ```shell
 docker run -d \
   --cpus=1 --memory=2g \
